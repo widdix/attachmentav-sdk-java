@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  description: "Scan files for viruses, trojans, and other kinds of malware."
+  title: attachmentAV
+  version: 1.0.0
+servers:
+- url: https://eu.developer.attachmentav.com/v1
+security:
+- apiKeyAuth: []
+tags:
+- name: attachmentAV
+paths:
+  /scan/sync/download:
+    post:
+      description: "Download a file from a remote location (HTTP/HTTPS), scan the\
+        \ file, and return the scan result."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SyncDownloadScanRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScanResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /scan/sync/binary:
+    post:
+      description: "Upload a file, scan the file, and return the scan result."
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScanResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: application/octet-stream
+      x-accepts:
+      - application/json
+  /scan/sync/form:
+    post:
+      description: "Upload a file, scan the file, and return the scan result."
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/SyncFormScanRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScanResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
+  /scan/sync/s3:
+    post:
+      description: "Download a file from S3, scan the file, and return the scan result.\
+        \ A bucket policy is required to grant attachmentAV access to the S3 objects."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SyncS3ScanRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScanResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    ScanResult:
+      example:
+        size: size
+        realfiletype: realfiletype
+        finding: finding
+        status: status
+      properties:
+        status:
+          type: string
+        finding:
+          type: string
+        size:
+          type: string
+        realfiletype:
+          type: string
+      type: object
+    SyncDownloadScanRequest:
+      example:
+        download_url: download_url
+        download_headers:
+          key: download_headers
+      properties:
+        download_url:
+          type: string
+        download_headers:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - download_url
+      type: object
+    SyncFormScanRequest:
+      properties:
+        file:
+          type: binary
+      required:
+      - file
+      type: object
+    SyncS3ScanRequest:
+      example:
+        bucket: bucket
+        version: version
+        key: key
+      properties:
+        bucket:
+          type: string
+        key:
+          type: string
+        version:
+          type: string
+      required:
+      - bucket
+      - key
+      type: object
+  securitySchemes:
+    apiKeyAuth:
+      in: header
+      name: x-api-key
+      type: apiKey
+
