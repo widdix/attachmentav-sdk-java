@@ -90,6 +90,8 @@ Send a S3 bucket name and object key to the attachmentAV Virus Scan API. attachm
 
 Maximum file size is 10 MB. The request timeout is 60 seconds.
 
+> A [bucket policy](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/#s3-bucket-policy) is required to grant attachmentAV access to private S3 objects.
+
 ```java
 SyncS3ScanRequest request = new SyncS3ScanRequest();
 request.setBucket("bucketav-release-data");
@@ -118,6 +120,8 @@ api.scanAsyncDownloadPost(request);
 Send a S3 bucket name and object key to the attachmentAV Virus Scan API.  attachmentAV will send the scan result to the callback URL. See [callback URL](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/#callback-url) for details.
 
 Maximum file size is 5 GB. The request timeout is 29 seconds, the asynchronous scan job is not affected by this limit.
+
+> A [bucket policy](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/#s3-bucket-policy) is required to grant attachmentAV access to private S3 objects.
 
 > Not supported by attachmentAV Virus Scan API (Self-hosted on AWS) yet. Contact [hello@attachmentav.com](hello@attachmentav.com) to let us know, in case you need this feature.
 
