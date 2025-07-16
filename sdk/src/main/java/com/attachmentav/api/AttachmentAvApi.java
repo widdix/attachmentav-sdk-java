@@ -27,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.attachmentav.model.AsyncDownloadScanRequest;
+import com.attachmentav.model.AsyncS3ScanRequest;
 import java.io.File;
 import com.attachmentav.model.ScanResult;
 import com.attachmentav.model.SyncDownloadScanRequest;
@@ -75,6 +77,250 @@ public class AttachmentAvApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for scanAsyncDownloadPost
+     * @param asyncDownloadScanRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncDownloadPostCall(@javax.annotation.Nonnull AsyncDownloadScanRequest asyncDownloadScanRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncDownloadScanRequest;
+
+        // create path and map variables
+        String localVarPath = "/scan/async/download";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scanAsyncDownloadPostValidateBeforeCall(@javax.annotation.Nonnull AsyncDownloadScanRequest asyncDownloadScanRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncDownloadScanRequest' is set
+        if (asyncDownloadScanRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncDownloadScanRequest' when calling scanAsyncDownloadPost(Async)");
+        }
+
+        return scanAsyncDownloadPostCall(asyncDownloadScanRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Download a file from a remote location (HTTP/HTTPS), scan the file, and post the scan result to your callback URL.
+     * @param asyncDownloadScanRequest  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public void scanAsyncDownloadPost(@javax.annotation.Nonnull AsyncDownloadScanRequest asyncDownloadScanRequest) throws ApiException {
+        scanAsyncDownloadPostWithHttpInfo(asyncDownloadScanRequest);
+    }
+
+    /**
+     * 
+     * Download a file from a remote location (HTTP/HTTPS), scan the file, and post the scan result to your callback URL.
+     * @param asyncDownloadScanRequest  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> scanAsyncDownloadPostWithHttpInfo(@javax.annotation.Nonnull AsyncDownloadScanRequest asyncDownloadScanRequest) throws ApiException {
+        okhttp3.Call localVarCall = scanAsyncDownloadPostValidateBeforeCall(asyncDownloadScanRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Download a file from a remote location (HTTP/HTTPS), scan the file, and post the scan result to your callback URL.
+     * @param asyncDownloadScanRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncDownloadPostAsync(@javax.annotation.Nonnull AsyncDownloadScanRequest asyncDownloadScanRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scanAsyncDownloadPostValidateBeforeCall(asyncDownloadScanRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for scanAsyncS3Post
+     * @param asyncS3ScanRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncS3PostCall(@javax.annotation.Nonnull AsyncS3ScanRequest asyncS3ScanRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncS3ScanRequest;
+
+        // create path and map variables
+        String localVarPath = "/scan/async/s3";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scanAsyncS3PostValidateBeforeCall(@javax.annotation.Nonnull AsyncS3ScanRequest asyncS3ScanRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncS3ScanRequest' is set
+        if (asyncS3ScanRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncS3ScanRequest' when calling scanAsyncS3Post(Async)");
+        }
+
+        return scanAsyncS3PostCall(asyncS3ScanRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Download a file from S3, scan the file, and post the scan result to your callback URL. A bucket policy is required to grant attachmentAV access to the S3 objects.
+     * @param asyncS3ScanRequest  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public void scanAsyncS3Post(@javax.annotation.Nonnull AsyncS3ScanRequest asyncS3ScanRequest) throws ApiException {
+        scanAsyncS3PostWithHttpInfo(asyncS3ScanRequest);
+    }
+
+    /**
+     * 
+     * Download a file from S3, scan the file, and post the scan result to your callback URL. A bucket policy is required to grant attachmentAV access to the S3 objects.
+     * @param asyncS3ScanRequest  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> scanAsyncS3PostWithHttpInfo(@javax.annotation.Nonnull AsyncS3ScanRequest asyncS3ScanRequest) throws ApiException {
+        okhttp3.Call localVarCall = scanAsyncS3PostValidateBeforeCall(asyncS3ScanRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Download a file from S3, scan the file, and post the scan result to your callback URL. A bucket policy is required to grant attachmentAV access to the S3 objects.
+     * @param asyncS3ScanRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncS3PostAsync(@javax.annotation.Nonnull AsyncS3ScanRequest asyncS3ScanRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scanAsyncS3PostValidateBeforeCall(asyncS3ScanRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for scanSyncBinaryPost
      * @param body  (required)
@@ -129,7 +375,7 @@ public class AttachmentAvApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "apiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -256,7 +502,7 @@ public class AttachmentAvApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "apiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -330,137 +576,6 @@ public class AttachmentAvApi {
         return localVarCall;
     }
     /**
-     * Build call for scanSyncFormPost
-     * @param _file  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call scanSyncFormPostCall(@javax.annotation.Nonnull File _file, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/scan/sync/form";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (_file != null) {
-            localVarFormParams.put("file", _file);
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "multipart/form-data"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "apiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call scanSyncFormPostValidateBeforeCall(@javax.annotation.Nonnull File _file, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter '_file' is set
-        if (_file == null) {
-            throw new ApiException("Missing the required parameter '_file' when calling scanSyncFormPost(Async)");
-        }
-
-        return scanSyncFormPostCall(_file, _callback);
-
-    }
-
-    /**
-     * 
-     * Upload a file, scan the file, and return the scan result.
-     * @param _file  (required)
-     * @return ScanResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ScanResult scanSyncFormPost(@javax.annotation.Nonnull File _file) throws ApiException {
-        ApiResponse<ScanResult> localVarResp = scanSyncFormPostWithHttpInfo(_file);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Upload a file, scan the file, and return the scan result.
-     * @param _file  (required)
-     * @return ApiResponse&lt;ScanResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ScanResult> scanSyncFormPostWithHttpInfo(@javax.annotation.Nonnull File _file) throws ApiException {
-        okhttp3.Call localVarCall = scanSyncFormPostValidateBeforeCall(_file, null);
-        Type localVarReturnType = new TypeToken<ScanResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Upload a file, scan the file, and return the scan result.
-     * @param _file  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call scanSyncFormPostAsync(@javax.annotation.Nonnull File _file, final ApiCallback<ScanResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = scanSyncFormPostValidateBeforeCall(_file, _callback);
-        Type localVarReturnType = new TypeToken<ScanResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for scanSyncS3Post
      * @param syncS3ScanRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -514,7 +629,7 @@ public class AttachmentAvApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "apiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

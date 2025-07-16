@@ -7,31 +7,10 @@ servers:
 - url: https://eu.developer.attachmentav.com/v1
 security:
 - apiKeyAuth: []
+- bearerAuth: []
 tags:
 - name: attachmentAV
 paths:
-  /scan/sync/download:
-    post:
-      description: "Download a file from a remote location (HTTP/HTTPS), scan the\
-        \ file, and return the scan result."
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/SyncDownloadScanRequest"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ScanResult"
-          description: Success
-      tags:
-      - attachmentAV
-      x-content-type: application/json
-      x-accepts:
-      - application/json
   /scan/sync/binary:
     post:
       description: "Upload a file, scan the file, and return the scan result."
@@ -54,14 +33,15 @@ paths:
       x-content-type: application/octet-stream
       x-accepts:
       - application/json
-  /scan/sync/form:
+  /scan/sync/download:
     post:
-      description: "Upload a file, scan the file, and return the scan result."
+      description: "Download a file from a remote location (HTTP/HTTPS), scan the\
+        \ file, and return the scan result."
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
-              $ref: "#/components/schemas/SyncFormScanRequest"
+              $ref: "#/components/schemas/SyncDownloadScanRequest"
         required: true
       responses:
         "200":
@@ -72,7 +52,7 @@ paths:
           description: Success
       tags:
       - attachmentAV
-      x-content-type: multipart/form-data
+      x-content-type: application/json
       x-accepts:
       - application/json
   /scan/sync/s3:
@@ -91,6 +71,43 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ScanResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /scan/async/download:
+    post:
+      description: "Download a file from a remote location (HTTP/HTTPS), scan the\
+        \ file, and post the scan result to your callback URL."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AsyncDownloadScanRequest"
+        required: true
+      responses:
+        "204":
+          description: Success
+      tags:
+      - attachmentAV
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /scan/async/s3:
+    post:
+      description: "Download a file from S3, scan the file, and post the scan result\
+        \ to your callback URL. A bucket policy is required to grant attachmentAV\
+        \ access to the S3 objects."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AsyncS3ScanRequest"
+        required: true
+      responses:
+        "204":
           description: Success
       tags:
       - attachmentAV
@@ -130,13 +147,6 @@ components:
       required:
       - download_url
       type: object
-    SyncFormScanRequest:
-      properties:
-        file:
-          type: binary
-      required:
-      - file
-      type: object
     SyncS3ScanRequest:
       example:
         bucket: bucket
@@ -153,9 +163,75 @@ components:
       - bucket
       - key
       type: object
+    AsyncDownloadScanRequest:
+      example:
+        callback_url: callback_url
+        trace_id: trace_id
+        download_url: download_url
+        callback_headers:
+          key: callback_headers
+        download_headers:
+          key: download_headers
+        custom_data: custom_data
+      properties:
+        download_url:
+          type: string
+        download_headers:
+          additionalProperties:
+            type: string
+          type: object
+        callback_url:
+          type: string
+        callback_headers:
+          additionalProperties:
+            type: string
+          type: object
+        trace_id:
+          type: string
+        custom_data:
+          type: string
+      required:
+      - callback_url
+      - download_url
+      type: object
+    AsyncS3ScanRequest:
+      example:
+        bucket: bucket
+        callback_url: callback_url
+        trace_id: trace_id
+        callback_headers:
+          key: callback_headers
+        version: version
+        custom_data: custom_data
+        key: key
+      properties:
+        bucket:
+          type: string
+        key:
+          type: string
+        version:
+          type: string
+        callback_url:
+          type: string
+        callback_headers:
+          additionalProperties:
+            type: string
+          type: object
+        trace_id:
+          type: string
+        custom_data:
+          type: string
+      required:
+      - bucket
+      - callback_url
+      - key
+      type: object
   securitySchemes:
     apiKeyAuth:
       in: header
       name: x-api-key
       type: apiKey
+    bearerAuth:
+      scheme: bearer
+      type: http
 

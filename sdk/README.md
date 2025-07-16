@@ -2,7 +2,7 @@
 
 attachmentAV
 - API version: 1.0.0
-  - Build date: 2025-07-15T09:36:10.987866+02:00[Europe/Berlin]
+  - Build date: 2025-07-16T09:59:54.016330+02:00[Europe/Berlin]
   - Generator version: 7.14.0
 
 Scan files for viruses, trojans, and other kinds of malware.
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.attachmentav</groupId>
   <artifactId>virus-scan-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.4.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.attachmentav:virus-scan-sdk:0.2.0"
+     implementation "com.attachmentav:virus-scan-sdk:0.4.0"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/virus-scan-sdk-0.2.0.jar`
+* `target/virus-scan-sdk-0.4.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -99,13 +99,16 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //apiKeyAuth.setApiKeyPrefix("Token");
 
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
     AttachmentAvApi apiInstance = new AttachmentAvApi(defaultClient);
-    File body = new File("/path/to/file"); // File | 
+    AsyncDownloadScanRequest asyncDownloadScanRequest = new AsyncDownloadScanRequest(); // AsyncDownloadScanRequest | 
     try {
-      ScanResult result = apiInstance.scanSyncBinaryPost(body);
-      System.out.println(result);
+      apiInstance.scanAsyncDownloadPost(asyncDownloadScanRequest);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AttachmentAvApi#scanSyncBinaryPost");
+      System.err.println("Exception when calling AttachmentAvApi#scanAsyncDownloadPost");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -122,14 +125,17 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AttachmentAvApi* | [**scanAsyncDownloadPost**](docs/AttachmentAvApi.md#scanAsyncDownloadPost) | **POST** /scan/async/download | 
+*AttachmentAvApi* | [**scanAsyncS3Post**](docs/AttachmentAvApi.md#scanAsyncS3Post) | **POST** /scan/async/s3 | 
 *AttachmentAvApi* | [**scanSyncBinaryPost**](docs/AttachmentAvApi.md#scanSyncBinaryPost) | **POST** /scan/sync/binary | 
 *AttachmentAvApi* | [**scanSyncDownloadPost**](docs/AttachmentAvApi.md#scanSyncDownloadPost) | **POST** /scan/sync/download | 
-*AttachmentAvApi* | [**scanSyncFormPost**](docs/AttachmentAvApi.md#scanSyncFormPost) | **POST** /scan/sync/form | 
 *AttachmentAvApi* | [**scanSyncS3Post**](docs/AttachmentAvApi.md#scanSyncS3Post) | **POST** /scan/sync/s3 | 
 
 
 ## Documentation for Models
 
+ - [AsyncDownloadScanRequest](docs/AsyncDownloadScanRequest.md)
+ - [AsyncS3ScanRequest](docs/AsyncS3ScanRequest.md)
  - [ScanResult](docs/ScanResult.md)
  - [SyncDownloadScanRequest](docs/SyncDownloadScanRequest.md)
  - [SyncS3ScanRequest](docs/SyncS3ScanRequest.md)
@@ -146,6 +152,11 @@ Authentication schemes defined for the API:
 - **Type**: API key
 - **API key parameter name**: x-api-key
 - **Location**: HTTP header
+
+<a id="bearerAuth"></a>
+### bearerAuth
+
+- **Type**: HTTP Bearer Token authentication
 
 
 ## Recommendation

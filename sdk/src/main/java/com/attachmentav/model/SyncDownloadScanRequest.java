@@ -50,7 +50,7 @@ import com.attachmentav.client.JSON;
 /**
  * SyncDownloadScanRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-15T09:36:10.987866+02:00[Europe/Berlin]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-16T09:59:54.016330+02:00[Europe/Berlin]", comments = "Generator version: 7.14.0")
 public class SyncDownloadScanRequest {
   public static final String SERIALIZED_NAME_DOWNLOAD_URL = "download_url";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_URL)
