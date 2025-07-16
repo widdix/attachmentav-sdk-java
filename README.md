@@ -17,7 +17,7 @@ Find the latest version of the [virus-scan-sdk](https://central.sonatype.com/art
 <dependency>
   <groupId>com.attachmentav</groupId>
   <artifactId>virus-scan-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.4.0</version>
 </dependency>
 ```
 

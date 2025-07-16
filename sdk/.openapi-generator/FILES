@@ -1,5 +1,6 @@
 .github/workflows/maven.yml
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -44,3 +45,9 @@ src/main/java/com/attachmentav/model/AsyncS3ScanRequest.java
 src/main/java/com/attachmentav/model/ScanResult.java
 src/main/java/com/attachmentav/model/SyncDownloadScanRequest.java
 src/main/java/com/attachmentav/model/SyncS3ScanRequest.java
+src/test/java/com/attachmentav/api/AttachmentAvApiTest.java
+src/test/java/com/attachmentav/model/AsyncDownloadScanRequestTest.java
+src/test/java/com/attachmentav/model/AsyncS3ScanRequestTest.java
+src/test/java/com/attachmentav/model/ScanResultTest.java
+src/test/java/com/attachmentav/model/SyncDownloadScanRequestTest.java
+src/test/java/com/attachmentav/model/SyncS3ScanRequestTest.java

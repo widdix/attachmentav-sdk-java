@@ -2,7 +2,7 @@
 
 attachmentAV
 - API version: 1.0.0
-  - Build date: 2025-07-16T09:59:54.016330+02:00[Europe/Berlin]
+  - Build date: 2025-07-16T10:01:55.392837+02:00[Europe/Berlin]
   - Generator version: 7.14.0
 
 Scan files for viruses, trojans, and other kinds of malware.

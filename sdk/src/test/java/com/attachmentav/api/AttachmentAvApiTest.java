@@ -14,6 +14,8 @@
 package com.attachmentav.api;
 
 import com.attachmentav.client.ApiException;
+import com.attachmentav.model.AsyncDownloadScanRequest;
+import com.attachmentav.model.AsyncS3ScanRequest;
 import java.io.File;
 import com.attachmentav.model.ScanResult;
 import com.attachmentav.model.SyncDownloadScanRequest;
@@ -33,6 +35,30 @@ import java.util.Map;
 public class AttachmentAvApiTest {
 
     private final AttachmentAvApi api = new AttachmentAvApi();
+
+    /**
+     * Download a file from a remote location (HTTP/HTTPS), scan the file, and post the scan result to your callback URL.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void scanAsyncDownloadPostTest() throws ApiException {
+        AsyncDownloadScanRequest asyncDownloadScanRequest = null;
+        api.scanAsyncDownloadPost(asyncDownloadScanRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Download a file from S3, scan the file, and post the scan result to your callback URL. A bucket policy is required to grant attachmentAV access to the S3 objects.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void scanAsyncS3PostTest() throws ApiException {
+        AsyncS3ScanRequest asyncS3ScanRequest = null;
+        api.scanAsyncS3Post(asyncS3ScanRequest);
+        // TODO: test validations
+    }
 
     /**
      * Upload a file, scan the file, and return the scan result.
@@ -55,18 +81,6 @@ public class AttachmentAvApiTest {
     public void scanSyncDownloadPostTest() throws ApiException {
         SyncDownloadScanRequest syncDownloadScanRequest = null;
         ScanResult response = api.scanSyncDownloadPost(syncDownloadScanRequest);
-        // TODO: test validations
-    }
-
-    /**
-     * Upload a file, scan the file, and return the scan result.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void scanSyncFormPostTest() throws ApiException {
-        File _file = null;
-        ScanResult response = api.scanSyncFormPost(_file);
         // TODO: test validations
     }
 
