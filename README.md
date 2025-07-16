@@ -1,15 +1,21 @@
 # attachmentav-sdk-java
-A virus scan SDK for Java. Scan files for viruses, trojans, and other kinds of malware with attachmentAV API.
 
-## What is attachmentAV API?
-The attachmentAV provides a REST API enabling you to scan files for viruses, trojans, and other kinds of malware. Two options are available:
+An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
+
+## What is attachmentAV?
+
+[attachmentAV](https://attachmentav.com) offers antivirus for SaaS and cloud platforms. Scan your files and attachments stored in the cloud for viruses, worms, and trojans. attachmentAV detects malware in real-time. Supports Amazon S3, Atlassian, Cloudflare R2, Salesforce, WordPress, and more.
+
+The [attachmentAV Virus and Malware Scan API](https://attachmentav.com/solution/virus-malware-scan-api/) provides a REST API allows you to integrate malware scans into your application. The solution comes in two variants:
 
 * [attachmentAV Virus Scan API (SaaS)](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/): get started quickly with a fully-managed service
 * [attachmentAV Virus Scan API (Self-hosted on AWS)](https://attachmentav.com/help/virus-malware-scan-api-aws/setup-guide/): deploy the production-ready API on AWS
 
-After you have subscribed to attachmentAV Virus Scan API (SaaS) or deployed attachmentAV Virus Scan API (Self-hosted on AWS), proceed with installing and configuring the SDK. 
+attachmentAV raises the bar for information security. Our solution is ISO 27001 certified and GDPR compliant. We are establishing, implementing, maintaining, and continually improving an information security management system (ISMS). Sensitive data is encrypted in transit as well as at rest and deleted immediately after processing. More than 1,000 customers trust our malware protection technology.
 
 ## Install SDK
+
+After you have subscribed to attachmentAV Virus Scan API (SaaS) or deployed attachmentAV Virus Scan API (Self-hosted on AWS), proceed with installing and configuring the SDK. 
 
 Find the latest version of the [virus-scan-sdk](https://central.sonatype.com/artifact/com.attachmentav/virus-scan-sdk) on Maven Central and add it to the dependencies of your project.
 
