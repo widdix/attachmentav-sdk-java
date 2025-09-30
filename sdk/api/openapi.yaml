@@ -114,6 +114,20 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /whoami:
+    get:
+      description: Get information abour yourself.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Whoami"
+          description: Success
+      tags:
+      - attachmentAV
+      x-accepts:
+      - application/json
 components:
   schemas:
     ScanResult:
@@ -225,6 +239,13 @@ components:
       - bucket
       - callback_url
       - key
+      type: object
+    Whoami:
+      example:
+        tenantId: tenantId
+      properties:
+        tenantId:
+          type: string
       type: object
   securitySchemes:
     apiKeyAuth:

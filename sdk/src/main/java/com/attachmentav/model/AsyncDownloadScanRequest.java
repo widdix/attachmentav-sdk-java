@@ -14,6 +14,7 @@
 package com.attachmentav.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,13 +45,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.attachmentav.client.JSON;
 
 /**
  * AsyncDownloadScanRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-16T10:01:55.392837+02:00[Europe/Berlin]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-30T11:58:19.717018+02:00[Europe/Berlin]", comments = "Generator version: 7.16.0")
 public class AsyncDownloadScanRequest {
   public static final String SERIALIZED_NAME_DOWNLOAD_URL = "download_url";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_URL)
@@ -284,7 +286,7 @@ public class AsyncDownloadScanRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AsyncDownloadScanRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncDownloadScanRequest is not found in the empty JSON string", AsyncDownloadScanRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in AsyncDownloadScanRequest is not found in the empty JSON string", AsyncDownloadScanRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -292,28 +294,28 @@ public class AsyncDownloadScanRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AsyncDownloadScanRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncDownloadScanRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AsyncDownloadScanRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AsyncDownloadScanRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("download_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `download_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("download_url").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `download_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("download_url").toString()));
       }
       if (!jsonObj.get("callback_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callback_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callback_url").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callback_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callback_url").toString()));
       }
       if ((jsonObj.get("trace_id") != null && !jsonObj.get("trace_id").isJsonNull()) && !jsonObj.get("trace_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `trace_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trace_id").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `trace_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trace_id").toString()));
       }
       if ((jsonObj.get("custom_data") != null && !jsonObj.get("custom_data").isJsonNull()) && !jsonObj.get("custom_data").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_data").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `custom_data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_data").toString()));
       }
   }
 

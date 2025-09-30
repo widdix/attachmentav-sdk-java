@@ -2,8 +2,8 @@
 
 attachmentAV
 - API version: 1.0.0
-  - Build date: 2025-07-16T10:01:55.392837+02:00[Europe/Berlin]
-  - Generator version: 7.14.0
+  - Build date: 2025-09-30T11:58:19.717018+02:00[Europe/Berlin]
+  - Generator version: 7.16.0
 
 Scan files for viruses, trojans, and other kinds of malware.
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.attachmentav</groupId>
   <artifactId>virus-scan-sdk</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.attachmentav:virus-scan-sdk:0.4.0"
+     implementation "com.attachmentav:virus-scan-sdk:0.5.0"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/virus-scan-sdk-0.4.0.jar`
+* `target/virus-scan-sdk-0.5.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -130,6 +130,7 @@ Class | Method | HTTP request | Description
 *AttachmentAvApi* | [**scanSyncBinaryPost**](docs/AttachmentAvApi.md#scanSyncBinaryPost) | **POST** /scan/sync/binary | 
 *AttachmentAvApi* | [**scanSyncDownloadPost**](docs/AttachmentAvApi.md#scanSyncDownloadPost) | **POST** /scan/sync/download | 
 *AttachmentAvApi* | [**scanSyncS3Post**](docs/AttachmentAvApi.md#scanSyncS3Post) | **POST** /scan/sync/s3 | 
+*AttachmentAvApi* | [**whoamiGet**](docs/AttachmentAvApi.md#whoamiGet) | **GET** /whoami | 
 
 
 ## Documentation for Models
@@ -139,6 +140,7 @@ Class | Method | HTTP request | Description
  - [ScanResult](docs/ScanResult.md)
  - [SyncDownloadScanRequest](docs/SyncDownloadScanRequest.md)
  - [SyncS3ScanRequest](docs/SyncS3ScanRequest.md)
+ - [Whoami](docs/Whoami.md)
 
 
 <a id="documentation-for-authorization"></a>
