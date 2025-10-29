@@ -1,6 +1,5 @@
 .github/workflows/maven.yml
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -12,6 +11,8 @@ docs/AttachmentAvApi.md
 docs/ScanResult.md
 docs/SyncDownloadScanRequest.md
 docs/SyncS3ScanRequest.md
+docs/UsageResult.md
+docs/UsageResultQuota.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -45,9 +46,5 @@ src/main/java/com/attachmentav/model/AsyncS3ScanRequest.java
 src/main/java/com/attachmentav/model/ScanResult.java
 src/main/java/com/attachmentav/model/SyncDownloadScanRequest.java
 src/main/java/com/attachmentav/model/SyncS3ScanRequest.java
-src/test/java/com/attachmentav/api/AttachmentAvApiTest.java
-src/test/java/com/attachmentav/model/AsyncDownloadScanRequestTest.java
-src/test/java/com/attachmentav/model/AsyncS3ScanRequestTest.java
-src/test/java/com/attachmentav/model/ScanResultTest.java
-src/test/java/com/attachmentav/model/SyncDownloadScanRequestTest.java
-src/test/java/com/attachmentav/model/SyncS3ScanRequestTest.java
+src/main/java/com/attachmentav/model/UsageResult.java
+src/main/java/com/attachmentav/model/UsageResultQuota.java

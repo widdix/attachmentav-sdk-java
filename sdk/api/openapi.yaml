@@ -114,6 +114,20 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /usage:
+    get:
+      description: Get remaining credits and quota.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsageResult"
+          description: Success
+      tags:
+      - attachmentAV
+      x-accepts:
+      - application/json
 components:
   schemas:
     ScanResult:
@@ -131,6 +145,18 @@ components:
           type: string
         realfiletype:
           type: string
+      type: object
+    UsageResult:
+      example:
+        size: size
+        realfiletype: realfiletype
+        finding: finding
+        status: status
+      properties:
+        credits:
+          type: number
+        quota:
+          $ref: "#/components/schemas/UsageResult_quota"
       type: object
     SyncDownloadScanRequest:
       example:
@@ -225,6 +251,13 @@ components:
       - bucket
       - callback_url
       - key
+      type: object
+    UsageResult_quota:
+      properties:
+        limit:
+          type: number
+        period:
+          type: string
       type: object
   securitySchemes:
     apiKeyAuth:

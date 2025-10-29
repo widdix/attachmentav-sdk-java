@@ -48,7 +48,7 @@ import com.attachmentav.client.JSON;
 /**
  * SyncS3ScanRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-16T10:01:55.392837+02:00[Europe/Berlin]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-29T20:00:09.114834+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
 public class SyncS3ScanRequest {
   public static final String SERIALIZED_NAME_BUCKET = "bucket";
   @SerializedName(SERIALIZED_NAME_BUCKET)

@@ -12,7 +12,7 @@ It might be necessary to delete the `sdk` folder in case of breaking changes.
 rm -fR sdk 
 ```
 
-After doing so, ddd the following plugins to `sdk/pom.xml`.
+After doing so, add the following plugins to `sdk/pom.xml`.
 
 ```xml
 <plugin>

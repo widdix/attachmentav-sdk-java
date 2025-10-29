@@ -143,7 +143,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/0.4.0/java");
+        setUserAgent("OpenAPI-Generator/0.5.0/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -719,7 +719,7 @@ public class ApiClient {
      * @param value The value of the parameter.
      * @return A list of {@code Pair} objects.
      */
-    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection value) {
+    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
         List<Pair> params = new ArrayList<Pair>();
 
         // preconditions
