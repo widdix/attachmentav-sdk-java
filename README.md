@@ -139,6 +139,32 @@ request.setCallbackUrl("https://example.com/callback");
 api.scanAsyncS3Post(request);
 ```
 
+### Who AM I
+
+Get information abour yourself.
+
+See [Whoami](sdk/models/Whoami.ts) for details.
+
+> Not supported by attachmentAV Virus Scan API (Self-hosted on AWS).
+
+```java
+com.attachmentav.model.Whoami result = api.whoamiGet();
+System.out.println("Who Am I: " + result.toString());
+```
+
+### Usage
+
+Get remaining credits and quota.
+
+See [Usage](sdk/models/Usage.ts) for details.
+
+> Not supported by attachmentAV Virus Scan API (Self-hosted on AWS).
+
+```java
+com.attachmentav.model.Usage result = api.usageGet();
+System.out.println("Usage: " + result.toString());
+```
+
 ## Need help?
 
 Do you need any help to get started with attachmentAV? [hello@attachmentav.com](mailto:hello@attachmentav.com).
