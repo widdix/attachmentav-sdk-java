@@ -9,6 +9,7 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 | [**scanSyncBinaryPost**](AttachmentAvApi.md#scanSyncBinaryPost) | **POST** /scan/sync/binary |  |
 | [**scanSyncDownloadPost**](AttachmentAvApi.md#scanSyncDownloadPost) | **POST** /scan/sync/download |  |
 | [**scanSyncS3Post**](AttachmentAvApi.md#scanSyncS3Post) | **POST** /scan/sync/s3 |  |
+| [**usageGet**](AttachmentAvApi.md#usageGet) | **GET** /usage |  |
 | [**whoamiGet**](AttachmentAvApi.md#whoamiGet) | **GET** /whoami |  |
 
 
@@ -368,6 +369,75 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+<a id="usageGet"></a>
+# **usageGet**
+> Usage usageGet()
+
+
+
+Get remaining credits and quota.
+
+### Example
+```java
+// Import classes:
+import com.attachmentav.client.ApiClient;
+import com.attachmentav.client.ApiException;
+import com.attachmentav.client.Configuration;
+import com.attachmentav.client.auth.*;
+import com.attachmentav.client.models.*;
+import com.attachmentav.api.AttachmentAvApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://eu.developer.attachmentav.com/v1");
+    
+    // Configure API key authorization: apiKeyAuth
+    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+    apiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //apiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    AttachmentAvApi apiInstance = new AttachmentAvApi(defaultClient);
+    try {
+      Usage result = apiInstance.usageGet();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AttachmentAvApi#usageGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Usage**](Usage.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

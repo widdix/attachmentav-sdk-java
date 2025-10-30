@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -46,34 +47,58 @@ import java.util.Set;
 import com.attachmentav.client.JSON;
 
 /**
- * Whoami
+ * UsageQuota
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T11:06:37.121906+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
-public class Whoami {
-  public static final String SERIALIZED_NAME_TENANT_ID = "tenantId";
-  @SerializedName(SERIALIZED_NAME_TENANT_ID)
+public class UsageQuota {
+  public static final String SERIALIZED_NAME_LIMIT = "limit";
+  @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private String tenantId;
+  private BigDecimal limit;
 
-  public Whoami() {
+  public static final String SERIALIZED_NAME_PERIOD = "period";
+  @SerializedName(SERIALIZED_NAME_PERIOD)
+  @javax.annotation.Nullable
+  private String period;
+
+  public UsageQuota() {
   }
 
-  public Whoami tenantId(@javax.annotation.Nullable String tenantId) {
-    this.tenantId = tenantId;
+  public UsageQuota limit(@javax.annotation.Nullable BigDecimal limit) {
+    this.limit = limit;
     return this;
   }
 
   /**
-   * Get tenantId
-   * @return tenantId
+   * Get limit
+   * @return limit
    */
   @javax.annotation.Nullable
-  public String getTenantId() {
-    return tenantId;
+  public BigDecimal getLimit() {
+    return limit;
   }
 
-  public void setTenantId(@javax.annotation.Nullable String tenantId) {
-    this.tenantId = tenantId;
+  public void setLimit(@javax.annotation.Nullable BigDecimal limit) {
+    this.limit = limit;
+  }
+
+
+  public UsageQuota period(@javax.annotation.Nullable String period) {
+    this.period = period;
+    return this;
+  }
+
+  /**
+   * Get period
+   * @return period
+   */
+  @javax.annotation.Nullable
+  public String getPeriod() {
+    return period;
+  }
+
+  public void setPeriod(@javax.annotation.Nullable String period) {
+    this.period = period;
   }
 
 
@@ -86,20 +111,22 @@ public class Whoami {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Whoami whoami = (Whoami) o;
-    return Objects.equals(this.tenantId, whoami.tenantId);
+    UsageQuota usageQuota = (UsageQuota) o;
+    return Objects.equals(this.limit, usageQuota.limit) &&
+        Objects.equals(this.period, usageQuota.period);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId);
+    return Objects.hash(limit, period);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Whoami {\n");
-    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("class UsageQuota {\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -121,7 +148,7 @@ public class Whoami {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("tenantId"));
+    openapiFields = new HashSet<String>(Arrays.asList("limit", "period"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -131,25 +158,25 @@ public class Whoami {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Whoami
+   * @throws IOException if the JSON Element is invalid with respect to UsageQuota
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Whoami.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Whoami is not found in the empty JSON string", Whoami.openapiRequiredFields.toString()));
+        if (!UsageQuota.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UsageQuota is not found in the empty JSON string", UsageQuota.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Whoami.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Whoami` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UsageQuota.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UsageQuota` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("tenantId") != null && !jsonObj.get("tenantId").isJsonNull()) && !jsonObj.get("tenantId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tenantId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenantId").toString()));
+      if ((jsonObj.get("period") != null && !jsonObj.get("period").isJsonNull()) && !jsonObj.get("period").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `period` to be a primitive type in the JSON string but got `%s`", jsonObj.get("period").toString()));
       }
   }
 
@@ -157,22 +184,22 @@ public class Whoami {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Whoami.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Whoami' and its subtypes
+       if (!UsageQuota.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UsageQuota' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Whoami> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Whoami.class));
+       final TypeAdapter<UsageQuota> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UsageQuota.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Whoami>() {
+       return (TypeAdapter<T>) new TypeAdapter<UsageQuota>() {
            @Override
-           public void write(JsonWriter out, Whoami value) throws IOException {
+           public void write(JsonWriter out, UsageQuota value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Whoami read(JsonReader in) throws IOException {
+           public UsageQuota read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -183,18 +210,18 @@ public class Whoami {
   }
 
   /**
-   * Create an instance of Whoami given an JSON string
+   * Create an instance of UsageQuota given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Whoami
-   * @throws IOException if the JSON string is invalid with respect to Whoami
+   * @return An instance of UsageQuota
+   * @throws IOException if the JSON string is invalid with respect to UsageQuota
    */
-  public static Whoami fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Whoami.class);
+  public static UsageQuota fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UsageQuota.class);
   }
 
   /**
-   * Convert an instance of Whoami to an JSON string
+   * Convert an instance of UsageQuota to an JSON string
    *
    * @return JSON string
    */

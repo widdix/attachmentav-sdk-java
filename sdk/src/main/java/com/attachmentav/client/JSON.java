@@ -101,6 +101,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.ScanResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.SyncDownloadScanRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.SyncS3ScanRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.Usage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.UsageQuota.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.Whoami.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
