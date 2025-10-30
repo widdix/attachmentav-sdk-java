@@ -20,6 +20,8 @@ import java.io.File;
 import com.attachmentav.model.ScanResult;
 import com.attachmentav.model.SyncDownloadScanRequest;
 import com.attachmentav.model.SyncS3ScanRequest;
+import com.attachmentav.model.Usage;
+import com.attachmentav.model.Whoami;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -93,6 +95,28 @@ public class AttachmentAvApiTest {
     public void scanSyncS3PostTest() throws ApiException {
         SyncS3ScanRequest syncS3ScanRequest = null;
         ScanResult response = api.scanSyncS3Post(syncS3ScanRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Get remaining credits and quota.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void usageGetTest() throws ApiException {
+        Usage response = api.usageGet();
+        // TODO: test validations
+    }
+
+    /**
+     * Get information abour yourself.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void whoamiGetTest() throws ApiException {
+        Whoami response = api.whoamiGet();
         // TODO: test validations
     }
 

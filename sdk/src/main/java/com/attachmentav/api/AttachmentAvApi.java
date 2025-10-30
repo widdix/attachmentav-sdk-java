@@ -33,7 +33,8 @@ import java.io.File;
 import com.attachmentav.model.ScanResult;
 import com.attachmentav.model.SyncDownloadScanRequest;
 import com.attachmentav.model.SyncS3ScanRequest;
-import com.attachmentav.model.UsageResult;
+import com.attachmentav.model.Usage;
+import com.attachmentav.model.Whoami;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -768,7 +769,7 @@ public class AttachmentAvApi {
     /**
      * 
      * Get remaining credits and quota.
-     * @return UsageResult
+     * @return Usage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -777,15 +778,15 @@ public class AttachmentAvApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public UsageResult usageGet() throws ApiException {
-        ApiResponse<UsageResult> localVarResp = usageGetWithHttpInfo();
+    public Usage usageGet() throws ApiException {
+        ApiResponse<Usage> localVarResp = usageGetWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
      * Get remaining credits and quota.
-     * @return ApiResponse&lt;UsageResult&gt;
+     * @return ApiResponse&lt;Usage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -794,9 +795,9 @@ public class AttachmentAvApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageResult> usageGetWithHttpInfo() throws ApiException {
+    public ApiResponse<Usage> usageGetWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = usageGetValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<UsageResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<Usage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -813,10 +814,127 @@ public class AttachmentAvApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call usageGetAsync(final ApiCallback<UsageResult> _callback) throws ApiException {
+    public okhttp3.Call usageGetAsync(final ApiCallback<Usage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = usageGetValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<UsageResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<Usage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for whoamiGet
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call whoamiGetCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/whoami";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call whoamiGetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return whoamiGetCall(_callback);
+
+    }
+
+    /**
+     * 
+     * Get information abour yourself.
+     * @return Whoami
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public Whoami whoamiGet() throws ApiException {
+        ApiResponse<Whoami> localVarResp = whoamiGetWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get information abour yourself.
+     * @return ApiResponse&lt;Whoami&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Whoami> whoamiGetWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = whoamiGetValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<Whoami>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get information abour yourself.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call whoamiGetAsync(final ApiCallback<Whoami> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = whoamiGetValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<Whoami>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

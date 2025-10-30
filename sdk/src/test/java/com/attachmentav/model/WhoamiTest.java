@@ -13,46 +13,36 @@
 
 package com.attachmentav.model;
 
-import com.attachmentav.model.UsageResultQuota;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for UsageResult
+ * Model tests for Whoami
  */
-public class UsageResultTest {
-    private final UsageResult model = new UsageResult();
+public class WhoamiTest {
+    private final Whoami model = new Whoami();
 
     /**
-     * Model tests for UsageResult
+     * Model tests for Whoami
      */
     @Test
-    public void testUsageResult() {
-        // TODO: test UsageResult
+    public void testWhoami() {
+        // TODO: test Whoami
     }
 
     /**
-     * Test the property 'credits'
+     * Test the property 'tenantId'
      */
     @Test
-    public void creditsTest() {
-        // TODO: test credits
-    }
-
-    /**
-     * Test the property 'quota'
-     */
-    @Test
-    public void quotaTest() {
-        // TODO: test quota
+    public void tenantIdTest() {
+        // TODO: test tenantId
     }
 
 }

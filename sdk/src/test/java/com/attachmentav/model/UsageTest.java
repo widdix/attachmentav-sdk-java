@@ -13,6 +13,7 @@
 
 package com.attachmentav.model;
 
+import com.attachmentav.model.UsageQuota;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,33 +26,33 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for UsageResultQuota
+ * Model tests for Usage
  */
-public class UsageResultQuotaTest {
-    private final UsageResultQuota model = new UsageResultQuota();
+public class UsageTest {
+    private final Usage model = new Usage();
 
     /**
-     * Model tests for UsageResultQuota
+     * Model tests for Usage
      */
     @Test
-    public void testUsageResultQuota() {
-        // TODO: test UsageResultQuota
+    public void testUsage() {
+        // TODO: test Usage
     }
 
     /**
-     * Test the property 'limit'
+     * Test the property 'credits'
      */
     @Test
-    public void limitTest() {
-        // TODO: test limit
+    public void creditsTest() {
+        // TODO: test credits
     }
 
     /**
-     * Test the property 'period'
+     * Test the property 'quota'
      */
     @Test
-    public void periodTest() {
-        // TODO: test period
+    public void quotaTest() {
+        // TODO: test quota
     }
 
 }

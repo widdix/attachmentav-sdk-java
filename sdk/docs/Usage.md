@@ -1,6 +1,6 @@
 
 
-# UsageResult
+# Usage
 
 
 ## Properties
@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**credits** | **BigDecimal** |  |  [optional] |
-|**quota** | [**UsageResultQuota**](UsageResultQuota.md) |  |  [optional] |
+|**quota** | [**UsageQuota**](UsageQuota.md) |  |  [optional] |
 
 
 

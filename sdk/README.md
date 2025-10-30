@@ -2,7 +2,7 @@
 
 attachmentAV
 - API version: 1.0.0
-  - Build date: 2025-10-29T20:00:09.114834+01:00[Europe/Berlin]
+  - Build date: 2025-10-30T11:06:37.121906+01:00[Europe/Berlin]
   - Generator version: 7.15.0
 
 Scan files for viruses, trojans, and other kinds of malware.
@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *AttachmentAvApi* | [**scanSyncDownloadPost**](docs/AttachmentAvApi.md#scanSyncDownloadPost) | **POST** /scan/sync/download | 
 *AttachmentAvApi* | [**scanSyncS3Post**](docs/AttachmentAvApi.md#scanSyncS3Post) | **POST** /scan/sync/s3 | 
 *AttachmentAvApi* | [**usageGet**](docs/AttachmentAvApi.md#usageGet) | **GET** /usage | 
+*AttachmentAvApi* | [**whoamiGet**](docs/AttachmentAvApi.md#whoamiGet) | **GET** /whoami | 
 
 
 ## Documentation for Models
@@ -140,8 +141,9 @@ Class | Method | HTTP request | Description
  - [ScanResult](docs/ScanResult.md)
  - [SyncDownloadScanRequest](docs/SyncDownloadScanRequest.md)
  - [SyncS3ScanRequest](docs/SyncS3ScanRequest.md)
- - [UsageResult](docs/UsageResult.md)
- - [UsageResultQuota](docs/UsageResultQuota.md)
+ - [Usage](docs/Usage.md)
+ - [UsageQuota](docs/UsageQuota.md)
+ - [Whoami](docs/Whoami.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -14,7 +14,7 @@
 package com.attachmentav.model;
 
 import java.util.Objects;
-import com.attachmentav.model.UsageResultQuota;
+import com.attachmentav.model.UsageQuota;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,10 +48,10 @@ import java.util.Set;
 import com.attachmentav.client.JSON;
 
 /**
- * UsageResult
+ * Usage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-29T20:00:09.114834+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
-public class UsageResult {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T11:06:37.121906+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
+public class Usage {
   public static final String SERIALIZED_NAME_CREDITS = "credits";
   @SerializedName(SERIALIZED_NAME_CREDITS)
   @javax.annotation.Nullable
@@ -60,12 +60,12 @@ public class UsageResult {
   public static final String SERIALIZED_NAME_QUOTA = "quota";
   @SerializedName(SERIALIZED_NAME_QUOTA)
   @javax.annotation.Nullable
-  private UsageResultQuota quota;
+  private UsageQuota quota;
 
-  public UsageResult() {
+  public Usage() {
   }
 
-  public UsageResult credits(@javax.annotation.Nullable BigDecimal credits) {
+  public Usage credits(@javax.annotation.Nullable BigDecimal credits) {
     this.credits = credits;
     return this;
   }
@@ -84,7 +84,7 @@ public class UsageResult {
   }
 
 
-  public UsageResult quota(@javax.annotation.Nullable UsageResultQuota quota) {
+  public Usage quota(@javax.annotation.Nullable UsageQuota quota) {
     this.quota = quota;
     return this;
   }
@@ -94,11 +94,11 @@ public class UsageResult {
    * @return quota
    */
   @javax.annotation.Nullable
-  public UsageResultQuota getQuota() {
+  public UsageQuota getQuota() {
     return quota;
   }
 
-  public void setQuota(@javax.annotation.Nullable UsageResultQuota quota) {
+  public void setQuota(@javax.annotation.Nullable UsageQuota quota) {
     this.quota = quota;
   }
 
@@ -112,9 +112,9 @@ public class UsageResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UsageResult usageResult = (UsageResult) o;
-    return Objects.equals(this.credits, usageResult.credits) &&
-        Objects.equals(this.quota, usageResult.quota);
+    Usage usage = (Usage) o;
+    return Objects.equals(this.credits, usage.credits) &&
+        Objects.equals(this.quota, usage.quota);
   }
 
   @Override
@@ -125,7 +125,7 @@ public class UsageResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UsageResult {\n");
+    sb.append("class Usage {\n");
     sb.append("    credits: ").append(toIndentedString(credits)).append("\n");
     sb.append("    quota: ").append(toIndentedString(quota)).append("\n");
     sb.append("}");
@@ -159,26 +159,26 @@ public class UsageResult {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to UsageResult
+   * @throws IOException if the JSON Element is invalid with respect to Usage
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UsageResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UsageResult is not found in the empty JSON string", UsageResult.openapiRequiredFields.toString()));
+        if (!Usage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Usage is not found in the empty JSON string", Usage.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UsageResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UsageResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Usage.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Usage` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `quota`
       if (jsonObj.get("quota") != null && !jsonObj.get("quota").isJsonNull()) {
-        UsageResultQuota.validateJsonElement(jsonObj.get("quota"));
+        UsageQuota.validateJsonElement(jsonObj.get("quota"));
       }
   }
 
@@ -186,22 +186,22 @@ public class UsageResult {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UsageResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UsageResult' and its subtypes
+       if (!Usage.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Usage' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UsageResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UsageResult.class));
+       final TypeAdapter<Usage> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Usage.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UsageResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<Usage>() {
            @Override
-           public void write(JsonWriter out, UsageResult value) throws IOException {
+           public void write(JsonWriter out, Usage value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UsageResult read(JsonReader in) throws IOException {
+           public Usage read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +212,18 @@ public class UsageResult {
   }
 
   /**
-   * Create an instance of UsageResult given an JSON string
+   * Create an instance of Usage given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of UsageResult
-   * @throws IOException if the JSON string is invalid with respect to UsageResult
+   * @return An instance of Usage
+   * @throws IOException if the JSON string is invalid with respect to Usage
    */
-  public static UsageResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UsageResult.class);
+  public static Usage fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Usage.class);
   }
 
   /**
-   * Convert an instance of UsageResult to an JSON string
+   * Convert an instance of Usage to an JSON string
    *
    * @return JSON string
    */
