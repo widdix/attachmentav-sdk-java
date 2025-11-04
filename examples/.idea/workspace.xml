@@ -14,8 +14,10 @@
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/AsyncDownload.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/AsyncS3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/CallbackSignatureX509.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/SyncDownload.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/SyncS3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/VerifyCallback.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Application.AsyncS3">
+}]]></component>
+  <component name="RunManager" selected="Application.VerifyCallback">
     <configuration name="AsyncDownload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.AsyncDownload" />
       <module name="attachmentav-java-examples" />
@@ -80,12 +86,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SyncDownload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.SyncDownload" />
+    <configuration name="SyncS3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.SyncS3" />
       <module name="attachmentav-java-examples" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="com.attachmentav.api.examples.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,8 +99,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SyncS3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.SyncS3" />
+    <configuration name="VerifyCallback" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.VerifyCallback" />
       <module name="attachmentav-java-examples" />
       <extension name="coverage">
         <pattern>
@@ -121,11 +127,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.VerifyCallback" />
         <item itemvalue="Application.AsyncS3" />
         <item itemvalue="Application.AsyncDownload" />
         <item itemvalue="Application.SyncS3" />
         <item itemvalue="Application.com.attachmentav.api.examples.SyncDownload" />
-        <item itemvalue="Application.SyncDownload" />
       </list>
     </recent_temporary>
   </component>
