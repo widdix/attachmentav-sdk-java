@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.attachmentav</groupId>
             <artifactId>virus-scan-sdk</artifactId>
             <version>0.5.0</version>
