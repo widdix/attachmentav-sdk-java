@@ -11,7 +11,11 @@ public class SyncS3 {
 
     public static void main(String[] args) throws ApiException {
         ApiClient client = Configuration.getDefaultApiClient();
+        // When using the SaaS offering
         client.setApiKey("<API_KEY_PLACEHOLDER>");
+        // When using the self-hosted offering, replace attachmentav.yourcompany.com with the domain name of your attachmentAV API installation: https://attachmentav.com/help/virus-malware-scan-api-aws/developer/definition.html#domain-name
+        //client.setBearerToken("<API_KEY_PLACEHOLDER>");
+        //client.setBasePath("https://attachmentav.yourcompany.com/api/v1");
         AttachmentAvApi api = new AttachmentAvApi();
         SyncS3ScanRequest request = new SyncS3ScanRequest();
         request.setBucket("<BUCKET_NAME_PLACEHOLDER>");

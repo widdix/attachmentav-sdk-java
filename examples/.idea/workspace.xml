@@ -48,18 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.VerifyCallback">
+}</component>
+  <component name="RunManager" selected="Application.com.attachmentav.api.examples.SyncDownload">
     <configuration name="AsyncDownload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.AsyncDownload" />
       <module name="attachmentav-java-examples" />
@@ -113,6 +113,8 @@
       </method>
     </configuration>
     <configuration name="com.attachmentav.api.examples.SyncDownload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.SyncDownload" />
       <module name="attachmentav-java-examples" />
       <extension name="coverage">
@@ -127,11 +129,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.attachmentav.api.examples.SyncDownload" />
         <item itemvalue="Application.VerifyCallback" />
         <item itemvalue="Application.AsyncS3" />
         <item itemvalue="Application.AsyncDownload" />
         <item itemvalue="Application.SyncS3" />
-        <item itemvalue="Application.com.attachmentav.api.examples.SyncDownload" />
       </list>
     </recent_temporary>
   </component>
