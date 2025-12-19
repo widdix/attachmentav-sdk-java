@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**credits** | **BigDecimal** |  |  [optional] |
-|**quota** | [**UsageQuota**](UsageQuota.md) |  |  [optional] |
+|**credits** | **BigDecimal** |  |  |
+|**quota** | [**UsageQuota**](UsageQuota.md) |  |  |
 
 
 

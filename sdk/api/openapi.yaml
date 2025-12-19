@@ -1,6 +1,8 @@
 openapi: 3.0.0
 info:
-  description: "Scan files for viruses, trojans, and other kinds of malware."
+  description: "An SDK to integrate virus and malware scan capabilities into Java\
+    \ applications. Scan files for viruses, trojans, and other kinds of malware with\
+    \ attachmentAV powered by Sophos."
   title: attachmentAV
   version: 1.0.0
 servers:
@@ -77,6 +79,31 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /scan/async/result:
+    get:
+      description: Retrieve the scan result for scan job.
+      parameters:
+      - description: ID used when submitting the scan job.
+        explode: true
+        in: query
+        name: trace_id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScanResult"
+          description: Success
+        "404":
+          description: Not found
+      tags:
+      - attachmentAV
+      x-accepts:
+      - application/json
   /scan/async/download:
     post:
       description: "Download a file from a remote location (HTTP/HTTPS), scan the\
@@ -88,6 +115,15 @@ paths:
               $ref: "#/components/schemas/AsyncDownloadScanRequest"
         required: true
       responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              description: URL to scan result for polling
+              explode: false
+              schema:
+                type: string
+              style: simple
         "204":
           description: Success
       tags:
@@ -107,25 +143,20 @@ paths:
               $ref: "#/components/schemas/AsyncS3ScanRequest"
         required: true
       responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              description: URL to scan result for polling
+              explode: false
+              schema:
+                type: string
+              style: simple
         "204":
           description: Success
       tags:
       - attachmentAV
       x-content-type: application/json
-      x-accepts:
-      - application/json
-  /usage:
-    get:
-      description: Get remaining credits and quota.
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Usage"
-          description: Success
-      tags:
-      - attachmentAV
       x-accepts:
       - application/json
   /whoami:
@@ -142,11 +173,47 @@ paths:
       - attachmentAV
       x-accepts:
       - application/json
+  /usage:
+    get:
+      description: Get remaining credits and quota.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Usage"
+          description: Success
+      tags:
+      - attachmentAV
+      x-accepts:
+      - application/json
 components:
   schemas:
+    Whoami:
+      example:
+        tenantId: tenantId
+      properties:
+        tenantId:
+          type: string
+      required:
+      - tenantId
+    Usage:
+      example:
+        credits: 0.8008281904610115
+        quota:
+          period: period
+          limit: 6.027456183070403
+      properties:
+        credits:
+          type: number
+        quota:
+          $ref: "#/components/schemas/Usage_quota"
+      required:
+      - credits
+      - quota
     ScanResult:
       example:
-        size: size
+        size: 0.8008281904610115
         realfiletype: realfiletype
         finding: finding
         status: status
@@ -156,22 +223,11 @@ components:
         finding:
           type: string
         size:
-          type: string
+          type: number
         realfiletype:
           type: string
-      type: object
-    Usage:
-      example:
-        credits: credits
-        quota:
-          limit: limit
-          period: period
-      properties:
-        credits:
-          type: number
-        quota:
-          $ref: "#/components/schemas/Usage_quota"
-      type: object
+      required:
+      - status
     SyncDownloadScanRequest:
       example:
         download_url: download_url
@@ -179,6 +235,13 @@ components:
           key: download_headers
       properties:
         download_url:
+          pattern: "^(?:(?:(?:https?):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\\
+            .\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\\
+            d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\\
+            .(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\\
+            d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\\
+            u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\\
+            S*)?$"
           type: string
         download_headers:
           additionalProperties:
@@ -186,7 +249,6 @@ components:
           type: object
       required:
       - download_url
-      type: object
     SyncS3ScanRequest:
       example:
         bucket: bucket
@@ -202,7 +264,6 @@ components:
       required:
       - bucket
       - key
-      type: object
     AsyncDownloadScanRequest:
       example:
         callback_url: callback_url
@@ -215,12 +276,26 @@ components:
         custom_data: custom_data
       properties:
         download_url:
+          pattern: "^(?:(?:(?:https?):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\\
+            .\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\\
+            d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\\
+            .(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\\
+            d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\\
+            u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\\
+            S*)?$"
           type: string
         download_headers:
           additionalProperties:
             type: string
           type: object
         callback_url:
+          pattern: "^(?:(?:(?:https?):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\\
+            .\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\\
+            d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\\
+            .(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\\
+            d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\\
+            u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\\
+            S*)?$"
           type: string
         callback_headers:
           additionalProperties:
@@ -231,9 +306,7 @@ components:
         custom_data:
           type: string
       required:
-      - callback_url
       - download_url
-      type: object
     AsyncS3ScanRequest:
       example:
         bucket: bucket
@@ -252,6 +325,13 @@ components:
         version:
           type: string
         callback_url:
+          pattern: "^(?:(?:(?:https?):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\\
+            .\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\\
+            d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\\
+            .(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\\
+            d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\\
+            u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\\
+            S*)?$"
           type: string
         callback_headers:
           additionalProperties:
@@ -263,22 +343,19 @@ components:
           type: string
       required:
       - bucket
-      - callback_url
       - key
-      type: object
-    Whoami:
-      example:
-        tenantId: tenantId
-      properties:
-        tenantId:
-          type: string
-      type: object
     Usage_quota:
+      example:
+        period: period
+        limit: 6.027456183070403
       properties:
         limit:
           type: number
         period:
           type: string
+      required:
+      - limit
+      - period
       type: object
   securitySchemes:
     apiKeyAuth:

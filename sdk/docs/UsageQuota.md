@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**limit** | **BigDecimal** |  |  [optional] |
-|**period** | **String** |  |  [optional] |
+|**limit** | **BigDecimal** |  |  |
+|**period** | **String** |  |  |
 
 
 

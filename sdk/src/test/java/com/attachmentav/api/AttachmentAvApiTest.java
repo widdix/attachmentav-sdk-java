@@ -1,6 +1,6 @@
 /*
  * attachmentAV
- * Scan files for viruses, trojans, and other kinds of malware.
+ * An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -47,6 +47,18 @@ public class AttachmentAvApiTest {
     public void scanAsyncDownloadPostTest() throws ApiException {
         AsyncDownloadScanRequest asyncDownloadScanRequest = null;
         api.scanAsyncDownloadPost(asyncDownloadScanRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Retrieve the scan result for scan job.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void scanAsyncResultGetTest() throws ApiException {
+        String traceId = null;
+        ScanResult response = api.scanAsyncResultGet(traceId);
         // TODO: test validations
     }
 

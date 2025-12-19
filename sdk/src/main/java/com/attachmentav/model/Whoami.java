@@ -1,6 +1,6 @@
 /*
  * attachmentAV
- * Scan files for viruses, trojans, and other kinds of malware.
+ * An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -14,6 +14,7 @@
 package com.attachmentav.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,23 +43,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.attachmentav.client.JSON;
 
 /**
  * Whoami
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T11:06:37.121906+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T11:04:11.782317+01:00[Europe/Berlin]", comments = "Generator version: 7.16.0")
 public class Whoami {
   public static final String SERIALIZED_NAME_TENANT_ID = "tenantId";
   @SerializedName(SERIALIZED_NAME_TENANT_ID)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String tenantId;
 
   public Whoami() {
   }
 
-  public Whoami tenantId(@javax.annotation.Nullable String tenantId) {
+  public Whoami tenantId(@javax.annotation.Nonnull String tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -67,12 +69,12 @@ public class Whoami {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getTenantId() {
     return tenantId;
   }
 
-  public void setTenantId(@javax.annotation.Nullable String tenantId) {
+  public void setTenantId(@javax.annotation.Nonnull String tenantId) {
     this.tenantId = tenantId;
   }
 
@@ -124,7 +126,7 @@ public class Whoami {
     openapiFields = new HashSet<String>(Arrays.asList("tenantId"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("tenantId"));
   }
 
   /**
@@ -136,7 +138,7 @@ public class Whoami {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Whoami.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Whoami is not found in the empty JSON string", Whoami.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Whoami is not found in the empty JSON string", Whoami.openapiRequiredFields.toString()));
         }
       }
 
@@ -144,12 +146,19 @@ public class Whoami {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!Whoami.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Whoami` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `Whoami` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Whoami.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("tenantId") != null && !jsonObj.get("tenantId").isJsonNull()) && !jsonObj.get("tenantId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tenantId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenantId").toString()));
+      if (!jsonObj.get("tenantId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tenantId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenantId").toString()));
       }
   }
 

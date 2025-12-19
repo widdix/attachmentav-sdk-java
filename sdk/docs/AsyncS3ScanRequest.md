@@ -10,7 +10,7 @@
 |**bucket** | **String** |  |  |
 |**key** | **String** |  |  |
 |**version** | **String** |  |  [optional] |
-|**callbackUrl** | **String** |  |  |
+|**callbackUrl** | **String** |  |  [optional] |
 |**callbackHeaders** | **Map&lt;String, String&gt;** |  |  [optional] |
 |**traceId** | **String** |  |  [optional] |
 |**customData** | **String** |  |  [optional] |

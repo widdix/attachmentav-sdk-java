@@ -3,7 +3,7 @@
 To generate the SDK execute the following command. Ensure to modify the `artifactVersion`.
 
 ```
-openapi-generator generate -i api.yml -g java -o ./sdk --additional-properties=artifactId=virus-scan-sdk,artifactVersion=0.5.0,developerOrganizationUrl=https://attachmentav.com,developerOrganization=attachmentAV,developerName="Andreas Wittig",developerEmail=andreas@attachmentav.com,licenseName=MIT,licenseUrl=https://mit-license.org,groupId=com.attachmentav,invokerPackage=com.attachmentav.client,apiPackage=com.attachmentav.api,modelPackage=com.attachmentav.model,artifactDescription="A virus scan SDK for Java. Scan files for viruse; trojans; and other kinds of malware with attachmentAV.",artifactUrl=https://github.com/widdix/attachmentav-sdk-java,scmUrl=https://github.com/widdix/attachmentav-sdk-java,scmDeveloperConnection=scm:git:git@github.com:widdix/attachmentav-sdk-java.git,scmConnection=scm:git:git@github.com:widdix/attachmentav-sdk-java.git
+openapi-generator generate -i api.yml -g java -o ./sdk --additional-properties=artifactId=virus-scan-sdk,artifactVersion=0.6.0,developerOrganizationUrl=https://attachmentav.com,developerOrganization=attachmentAV,developerName="Andreas Wittig",developerEmail=andreas@attachmentav.com,licenseName=MIT,licenseUrl=https://mit-license.org,groupId=com.attachmentav,invokerPackage=com.attachmentav.client,apiPackage=com.attachmentav.api,modelPackage=com.attachmentav.model,artifactDescription="A virus scan SDK for Java. Scan files for viruse; trojans; and other kinds of malware with attachmentAV.",artifactUrl=https://github.com/widdix/attachmentav-sdk-java,scmUrl=https://github.com/widdix/attachmentav-sdk-java,scmDeveloperConnection=scm:git:git@github.com:widdix/attachmentav-sdk-java.git,scmConnection=scm:git:git@github.com:widdix/attachmentav-sdk-java.git
 ```
 
 It might be necessary to delete the `sdk` folder in case of breaking changes.
@@ -63,5 +63,6 @@ Deploying a new version requires a valid PGP key for `andreas@attachmentav.com` 
 Execute the deployment.
 
 ```
+cd sdk/
 mvn clean deploy
 ```

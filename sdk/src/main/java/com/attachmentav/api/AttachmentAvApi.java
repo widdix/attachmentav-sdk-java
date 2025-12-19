@@ -1,6 +1,6 @@
 /*
  * attachmentAV
- * Scan files for viruses, trojans, and other kinds of malware.
+ * An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -89,6 +89,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -156,6 +157,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -173,6 +175,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -192,6 +195,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -199,6 +203,140 @@ public class AttachmentAvApi {
 
         okhttp3.Call localVarCall = scanAsyncDownloadPostValidateBeforeCall(asyncDownloadScanRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for scanAsyncResultGet
+     * @param traceId ID used when submitting the scan job. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncResultGetCall(@javax.annotation.Nonnull String traceId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/scan/async/result";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (traceId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("trace_id", traceId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call scanAsyncResultGetValidateBeforeCall(@javax.annotation.Nonnull String traceId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'traceId' is set
+        if (traceId == null) {
+            throw new ApiException("Missing the required parameter 'traceId' when calling scanAsyncResultGet(Async)");
+        }
+
+        return scanAsyncResultGetCall(traceId, _callback);
+
+    }
+
+    /**
+     * 
+     * Retrieve the scan result for scan job.
+     * @param traceId ID used when submitting the scan job. (required)
+     * @return ScanResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ScanResult scanAsyncResultGet(@javax.annotation.Nonnull String traceId) throws ApiException {
+        ApiResponse<ScanResult> localVarResp = scanAsyncResultGetWithHttpInfo(traceId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Retrieve the scan result for scan job.
+     * @param traceId ID used when submitting the scan job. (required)
+     * @return ApiResponse&lt;ScanResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ScanResult> scanAsyncResultGetWithHttpInfo(@javax.annotation.Nonnull String traceId) throws ApiException {
+        okhttp3.Call localVarCall = scanAsyncResultGetValidateBeforeCall(traceId, null);
+        Type localVarReturnType = new TypeToken<ScanResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Retrieve the scan result for scan job.
+     * @param traceId ID used when submitting the scan job. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call scanAsyncResultGetAsync(@javax.annotation.Nonnull String traceId, final ApiCallback<ScanResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = scanAsyncResultGetValidateBeforeCall(traceId, _callback);
+        Type localVarReturnType = new TypeToken<ScanResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -211,6 +349,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -278,6 +417,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -295,6 +435,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
@@ -314,6 +455,7 @@ public class AttachmentAvApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  * Location - URL to scan result for polling <br>  </td></tr>
         <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */

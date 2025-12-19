@@ -5,6 +5,7 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**scanAsyncDownloadPost**](AttachmentAvApi.md#scanAsyncDownloadPost) | **POST** /scan/async/download |  |
+| [**scanAsyncResultGet**](AttachmentAvApi.md#scanAsyncResultGet) | **GET** /scan/async/result |  |
 | [**scanAsyncS3Post**](AttachmentAvApi.md#scanAsyncS3Post) | **POST** /scan/async/s3 |  |
 | [**scanSyncBinaryPost**](AttachmentAvApi.md#scanSyncBinaryPost) | **POST** /scan/sync/binary |  |
 | [**scanSyncDownloadPost**](AttachmentAvApi.md#scanSyncDownloadPost) | **POST** /scan/sync/download |  |
@@ -83,7 +84,82 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **201** | Created |  * Location - URL to scan result for polling <br>  |
 | **204** | Success |  -  |
+
+<a id="scanAsyncResultGet"></a>
+# **scanAsyncResultGet**
+> ScanResult scanAsyncResultGet(traceId)
+
+
+
+Retrieve the scan result for scan job.
+
+### Example
+```java
+// Import classes:
+import com.attachmentav.client.ApiClient;
+import com.attachmentav.client.ApiException;
+import com.attachmentav.client.Configuration;
+import com.attachmentav.client.auth.*;
+import com.attachmentav.client.models.*;
+import com.attachmentav.api.AttachmentAvApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://eu.developer.attachmentav.com/v1");
+    
+    // Configure API key authorization: apiKeyAuth
+    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+    apiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //apiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    AttachmentAvApi apiInstance = new AttachmentAvApi(defaultClient);
+    String traceId = "traceId_example"; // String | ID used when submitting the scan job.
+    try {
+      ScanResult result = apiInstance.scanAsyncResultGet(traceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AttachmentAvApi#scanAsyncResultGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **traceId** | **String**| ID used when submitting the scan job. | |
+
+### Return type
+
+[**ScanResult**](ScanResult.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **404** | Not found |  -  |
 
 <a id="scanAsyncS3Post"></a>
 # **scanAsyncS3Post**
@@ -155,6 +231,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **201** | Created |  * Location - URL to scan result for polling <br>  |
 | **204** | Success |  -  |
 
 <a id="scanSyncBinaryPost"></a>

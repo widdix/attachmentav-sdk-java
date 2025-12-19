@@ -1,6 +1,6 @@
 /*
  * attachmentAV
- * Scan files for viruses, trojans, and other kinds of malware.
+ * An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -14,6 +14,7 @@
 package com.attachmentav.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.attachmentav.model.UsageQuota;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -44,28 +45,29 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.attachmentav.client.JSON;
 
 /**
  * Usage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T11:06:37.121906+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T11:04:11.782317+01:00[Europe/Berlin]", comments = "Generator version: 7.16.0")
 public class Usage {
   public static final String SERIALIZED_NAME_CREDITS = "credits";
   @SerializedName(SERIALIZED_NAME_CREDITS)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private BigDecimal credits;
 
   public static final String SERIALIZED_NAME_QUOTA = "quota";
   @SerializedName(SERIALIZED_NAME_QUOTA)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UsageQuota quota;
 
   public Usage() {
   }
 
-  public Usage credits(@javax.annotation.Nullable BigDecimal credits) {
+  public Usage credits(@javax.annotation.Nonnull BigDecimal credits) {
     this.credits = credits;
     return this;
   }
@@ -74,17 +76,17 @@ public class Usage {
    * Get credits
    * @return credits
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BigDecimal getCredits() {
     return credits;
   }
 
-  public void setCredits(@javax.annotation.Nullable BigDecimal credits) {
+  public void setCredits(@javax.annotation.Nonnull BigDecimal credits) {
     this.credits = credits;
   }
 
 
-  public Usage quota(@javax.annotation.Nullable UsageQuota quota) {
+  public Usage quota(@javax.annotation.Nonnull UsageQuota quota) {
     this.quota = quota;
     return this;
   }
@@ -93,12 +95,12 @@ public class Usage {
    * Get quota
    * @return quota
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public UsageQuota getQuota() {
     return quota;
   }
 
-  public void setQuota(@javax.annotation.Nullable UsageQuota quota) {
+  public void setQuota(@javax.annotation.Nonnull UsageQuota quota) {
     this.quota = quota;
   }
 
@@ -152,7 +154,7 @@ public class Usage {
     openapiFields = new HashSet<String>(Arrays.asList("credits", "quota"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("credits", "quota"));
   }
 
   /**
@@ -164,7 +166,7 @@ public class Usage {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Usage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Usage is not found in the empty JSON string", Usage.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Usage is not found in the empty JSON string", Usage.openapiRequiredFields.toString()));
         }
       }
 
@@ -172,14 +174,19 @@ public class Usage {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!Usage.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Usage` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `Usage` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Usage.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `quota`
-      if (jsonObj.get("quota") != null && !jsonObj.get("quota").isJsonNull()) {
-        UsageQuota.validateJsonElement(jsonObj.get("quota"));
-      }
+      // validate the required field `quota`
+      UsageQuota.validateJsonElement(jsonObj.get("quota"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**status** | **String** |  |  [optional] |
+|**status** | **String** |  |  |
 |**finding** | **String** |  |  [optional] |
-|**size** | **String** |  |  [optional] |
+|**size** | **BigDecimal** |  |  [optional] |
 |**realfiletype** | **String** |  |  [optional] |
 
 

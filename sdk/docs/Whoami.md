@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**tenantId** | **String** |  |  [optional] |
+|**tenantId** | **String** |  |  |
 
 
 

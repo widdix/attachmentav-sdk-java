@@ -1,6 +1,6 @@
 /*
  * attachmentAV
- * Scan files for viruses, trojans, and other kinds of malware.
+ * An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -14,12 +14,14 @@
 package com.attachmentav.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -42,17 +44,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.attachmentav.client.JSON;
 
 /**
  * ScanResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-30T11:06:37.121906+01:00[Europe/Berlin]", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T11:04:11.782317+01:00[Europe/Berlin]", comments = "Generator version: 7.16.0")
 public class ScanResult {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String status;
 
   public static final String SERIALIZED_NAME_FINDING = "finding";
@@ -63,7 +66,7 @@ public class ScanResult {
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
   @javax.annotation.Nullable
-  private String size;
+  private BigDecimal size;
 
   public static final String SERIALIZED_NAME_REALFILETYPE = "realfiletype";
   @SerializedName(SERIALIZED_NAME_REALFILETYPE)
@@ -73,7 +76,7 @@ public class ScanResult {
   public ScanResult() {
   }
 
-  public ScanResult status(@javax.annotation.Nullable String status) {
+  public ScanResult status(@javax.annotation.Nonnull String status) {
     this.status = status;
     return this;
   }
@@ -82,12 +85,12 @@ public class ScanResult {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable String status) {
+  public void setStatus(@javax.annotation.Nonnull String status) {
     this.status = status;
   }
 
@@ -111,7 +114,7 @@ public class ScanResult {
   }
 
 
-  public ScanResult size(@javax.annotation.Nullable String size) {
+  public ScanResult size(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
     return this;
   }
@@ -121,11 +124,11 @@ public class ScanResult {
    * @return size
    */
   @javax.annotation.Nullable
-  public String getSize() {
+  public BigDecimal getSize() {
     return size;
   }
 
-  public void setSize(@javax.annotation.Nullable String size) {
+  public void setSize(@javax.annotation.Nullable BigDecimal size) {
     this.size = size;
   }
 
@@ -202,7 +205,7 @@ public class ScanResult {
     openapiFields = new HashSet<String>(Arrays.asList("status", "finding", "size", "realfiletype"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("status"));
   }
 
   /**
@@ -214,7 +217,7 @@ public class ScanResult {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ScanResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ScanResult is not found in the empty JSON string", ScanResult.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ScanResult is not found in the empty JSON string", ScanResult.openapiRequiredFields.toString()));
         }
       }
 
@@ -222,21 +225,25 @@ public class ScanResult {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ScanResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ScanResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ScanResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ScanResult.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if ((jsonObj.get("finding") != null && !jsonObj.get("finding").isJsonNull()) && !jsonObj.get("finding").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `finding` to be a primitive type in the JSON string but got `%s`", jsonObj.get("finding").toString()));
-      }
-      if ((jsonObj.get("size") != null && !jsonObj.get("size").isJsonNull()) && !jsonObj.get("size").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `size` to be a primitive type in the JSON string but got `%s`", jsonObj.get("size").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `finding` to be a primitive type in the JSON string but got `%s`", jsonObj.get("finding").toString()));
       }
       if ((jsonObj.get("realfiletype") != null && !jsonObj.get("realfiletype").isJsonNull()) && !jsonObj.get("realfiletype").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `realfiletype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("realfiletype").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `realfiletype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("realfiletype").toString()));
       }
   }
 

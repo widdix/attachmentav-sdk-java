@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c66a6480-634a-48e4-ab33-53a66c6406d8" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
@@ -14,6 +15,7 @@
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/AsyncDownload.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/AsyncS3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/AsyncS3Polling.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/CallbackSignatureX509.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/SyncDownload.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/attachmentav/api/examples/SyncS3.java" afterDir="false" />
@@ -48,20 +50,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Application.com.attachmentav.api.examples.SyncDownload">
-    <configuration name="AsyncDownload" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.AsyncDownload" />
+}]]></component>
+  <component name="RunManager" selected="Application.AsyncS3Polling">
+    <configuration name="AsyncDownloadPolling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.AsyncDownloadPolling" />
       <module name="attachmentav-java-examples" />
       <extension name="coverage">
         <pattern>
@@ -86,8 +89,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SyncS3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.SyncS3" />
+    <configuration name="AsyncS3Polling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.attachmentav.api.examples.AsyncS3Polling" />
       <module name="attachmentav-java-examples" />
       <extension name="coverage">
         <pattern>
@@ -129,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AsyncS3Polling" />
+        <item itemvalue="Application.AsyncDownloadPolling" />
         <item itemvalue="Application.com.attachmentav.api.examples.SyncDownload" />
         <item itemvalue="Application.VerifyCallback" />
         <item itemvalue="Application.AsyncS3" />
-        <item itemvalue="Application.AsyncDownload" />
-        <item itemvalue="Application.SyncS3" />
       </list>
     </recent_temporary>
   </component>
