@@ -31,7 +31,13 @@ Find the latest version of the [virus-scan-sdk](https://central.sonatype.com/art
 
 ### Configure SDK for the use with API (SaaS)
 
-An [active subscription and API key](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/#api-key) is required. Replace `<API_KEY_PLACEHOLDER>` with the API key.
+An [active subscription and API key](https://attachmentav.com/help/virus-malware-scan-api/setup-guide/#api-key) is required. Replace `<API_KEY_PLACEHOLDER>` with the API key and `<API_ENDPOINT_PLACEHOLDER>` with the API endpoint. The API endpoint (region) must match with the region selected for the subscription. The default is `Europe`.
+
+**API endpoints (SaaS)**
+* `https://eu.developer.attachmentav.com/v1/` (Europe)
+* `https://us.developer.attachmentav.com/v1/` (United States of America)
+* `https://canada.developer.attachmentav.com/v1/` (Canada)
+* `https://india.developer.attachmentav.com/v1/` (India)
 
 ```java
 import com.attachmentav.api.AttachmentAvApi;
@@ -44,12 +50,16 @@ import com.attachmentav.model.ScanResult;
 
 ApiClient client = Configuration.getDefaultApiClient();
 client.setApiKey("<API_KEY_PLACEHOLDER>");
+client.setBasePath("<API_ENDPOINT_PLACEHOLDER>");
 AttachmentAvApi api = new AttachmentAvApi();
 ```
 
 ### Configure SDK for the use with API (Self-hosted on AWS)
 
-When following the setup guide, you specified the `ApiKeys` parameter for the CloudFormation stack. Replace `<API_KEY_PLACEHOLDER>` with one of those keys. 
+When following the setup guide, you specified the `ApiKeys` parameter for the CloudFormation stack. Replace `<API_KEY_PLACEHOLDER>` with one of those keys and `<API_ENDPOINT_PLACEHOLDER>` with the API endpoint.
+
+Example, replace `attachmentav.yourcompany.com` with the domain name of your [attachmentAV API installation](https://attachmentav.com/help/virus-malware-scan-api-aws/developer/definition.html#domain-name): 
+`https://attachmentav.yourcompany.com/api/v1`.
 
 ```java
 import com.attachmentav.api.AttachmentAvApi;
@@ -62,7 +72,7 @@ import com.attachmentav.model.ScanResult;
 
 ApiClient client = Configuration.getDefaultApiClient();
 client.setBearerToken("<API_KEY_PLACEHOLDER>");
-client.setBasePath("https://example.com/api/v1");
+client.setBasePath("<API_ENDPOINT_PLACEHOLDER>");
 AttachmentAvApi api = new AttachmentAvApi();
 ```
 
