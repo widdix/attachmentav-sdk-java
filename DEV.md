@@ -66,3 +66,5 @@ Execute the deployment.
 cd sdk/
 mvn clean deploy
 ```
+
+Go to [](https://central.sonatype.com/publishing/deployments) to publish the new version.
