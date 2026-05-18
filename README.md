@@ -38,6 +38,7 @@ An [active subscription and API key](https://attachmentav.com/help/virus-malware
 * `https://us.developer.attachmentav.com/v1/` (United States of America)
 * `https://canada.developer.attachmentav.com/v1/` (Canada)
 * `https://india.developer.attachmentav.com/v1/` (India)
+* `https://australia.developer.attachmentav.com/v1/` (Australia)
 
 ```java
 import com.attachmentav.api.AttachmentAvApi;
