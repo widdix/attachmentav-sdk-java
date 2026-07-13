@@ -217,11 +217,22 @@ System.out.println("Async download scan result: " + scanResult);
 
 Find full example [here](https://github.com/widdix/attachmentav-sdk-java/blob/main/examples/src/main/java/com/attachmentav/api/examples/AsyncS3.java)
 
+### Callback Failures
+
+List callback failures that prevent attachmentAV from invoking the defined callback_url. Sorted by time in descending order (youngest failure is returned first). Callback failures are stored for 30 days.
+
+> Not supported by attachmentAV Virus Scan API (Self-hosted on AWS).
+
+```java
+com.attachmentav.model.CallbackFailures result = api.callbackFailuresGet("https://api.yourcompany.com/attachmentav/callback", null);
+System.out.println("Callback failures: " + result.toString());
+```
+
+Find full example [here](https://github.com/widdix/attachmentav-sdk-java/blob/main/examples/src/main/java/com/attachmentav/api/examples/CallbackFailures.java)
+
 ### Usage
 
 Get remaining credits and quota.
-
-See [Usage](sdk/models/Usage.ts) for details.
 
 > Not supported by attachmentAV Virus Scan API (Self-hosted on AWS).
 
@@ -235,8 +246,6 @@ Find full example [here](https://github.com/widdix/attachmentav-sdk-java/blob/ma
 ### Who am I
 
 Get information abour yourself.
-
-See [Whoami](sdk/models/Whoami.ts) for details.
 
 > Not supported by attachmentAV Virus Scan API (Self-hosted on AWS).
 

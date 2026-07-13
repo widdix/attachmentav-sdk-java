@@ -2,8 +2,8 @@
 
 attachmentAV
 - API version: 1.0.0
-  - Build date: 2025-12-19T11:04:11.782317+01:00[Europe/Berlin]
-  - Generator version: 7.16.0
+  - Build date: 2026-07-13T21:53:27.254284+02:00[Europe/Berlin]
+  - Generator version: 7.23.0
 
 An SDK to integrate virus and malware scan capabilities into Java applications. Scan files for viruses, trojans, and other kinds of malware with attachmentAV powered by Sophos.
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.attachmentav</groupId>
   <artifactId>virus-scan-sdk</artifactId>
-  <version>0.6.0</version>
+  <version>0.7.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.attachmentav:virus-scan-sdk:0.6.0"
+     implementation "com.attachmentav:virus-scan-sdk:0.7.0"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/virus-scan-sdk-0.6.0.jar`
+* `target/virus-scan-sdk-0.7.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -104,11 +104,13 @@ public class Example {
     bearerAuth.setBearerToken("BEARER TOKEN");
 
     AttachmentAvApi apiInstance = new AttachmentAvApi(defaultClient);
-    AsyncDownloadScanRequest asyncDownloadScanRequest = new AsyncDownloadScanRequest(); // AsyncDownloadScanRequest | 
+    String callbackUrl = "callbackUrl_example"; // String | URL to receive the scan result via HTTPS POST
+    String cursor = "cursor_example"; // String | Use the next_cursor value from a previous response to page through failures
     try {
-      apiInstance.scanAsyncDownloadPost(asyncDownloadScanRequest);
+      CallbackFailures result = apiInstance.callbackFailuresGet(callbackUrl, cursor);
+      System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AttachmentAvApi#scanAsyncDownloadPost");
+      System.err.println("Exception when calling AttachmentAvApi#callbackFailuresGet");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -125,6 +127,7 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AttachmentAvApi* | [**callbackFailuresGet**](docs/AttachmentAvApi.md#callbackFailuresGet) | **GET** /callback/failures | 
 *AttachmentAvApi* | [**scanAsyncDownloadPost**](docs/AttachmentAvApi.md#scanAsyncDownloadPost) | **POST** /scan/async/download | 
 *AttachmentAvApi* | [**scanAsyncResultGet**](docs/AttachmentAvApi.md#scanAsyncResultGet) | **GET** /scan/async/result | 
 *AttachmentAvApi* | [**scanAsyncS3Post**](docs/AttachmentAvApi.md#scanAsyncS3Post) | **POST** /scan/async/s3 | 
@@ -139,6 +142,8 @@ Class | Method | HTTP request | Description
 
  - [AsyncDownloadScanRequest](docs/AsyncDownloadScanRequest.md)
  - [AsyncS3ScanRequest](docs/AsyncS3ScanRequest.md)
+ - [CallbackFailure](docs/CallbackFailure.md)
+ - [CallbackFailures](docs/CallbackFailures.md)
  - [ScanResult](docs/ScanResult.md)
  - [SyncDownloadScanRequest](docs/SyncDownloadScanRequest.md)
  - [SyncS3ScanRequest](docs/SyncS3ScanRequest.md)

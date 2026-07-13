@@ -4,6 +4,7 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**callbackFailuresGet**](AttachmentAvApi.md#callbackFailuresGet) | **GET** /callback/failures |  |
 | [**scanAsyncDownloadPost**](AttachmentAvApi.md#scanAsyncDownloadPost) | **POST** /scan/async/download |  |
 | [**scanAsyncResultGet**](AttachmentAvApi.md#scanAsyncResultGet) | **GET** /scan/async/result |  |
 | [**scanAsyncS3Post**](AttachmentAvApi.md#scanAsyncS3Post) | **POST** /scan/async/s3 |  |
@@ -13,6 +14,81 @@ All URIs are relative to *https://eu.developer.attachmentav.com/v1*
 | [**usageGet**](AttachmentAvApi.md#usageGet) | **GET** /usage |  |
 | [**whoamiGet**](AttachmentAvApi.md#whoamiGet) | **GET** /whoami |  |
 
+
+<a id="callbackFailuresGet"></a>
+# **callbackFailuresGet**
+> CallbackFailures callbackFailuresGet(callbackUrl, cursor)
+
+
+
+List callback failures
+
+### Example
+```java
+// Import classes:
+import com.attachmentav.client.ApiClient;
+import com.attachmentav.client.ApiException;
+import com.attachmentav.client.Configuration;
+import com.attachmentav.client.auth.*;
+import com.attachmentav.client.models.*;
+import com.attachmentav.api.AttachmentAvApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://eu.developer.attachmentav.com/v1");
+    
+    // Configure API key authorization: apiKeyAuth
+    ApiKeyAuth apiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("apiKeyAuth");
+    apiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //apiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    AttachmentAvApi apiInstance = new AttachmentAvApi(defaultClient);
+    String callbackUrl = "callbackUrl_example"; // String | URL to receive the scan result via HTTPS POST
+    String cursor = "cursor_example"; // String | Use the next_cursor value from a previous response to page through failures
+    try {
+      CallbackFailures result = apiInstance.callbackFailuresGet(callbackUrl, cursor);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AttachmentAvApi#callbackFailuresGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **callbackUrl** | **String**| URL to receive the scan result via HTTPS POST | |
+| **cursor** | **String**| Use the next_cursor value from a previous response to page through failures | [optional] |
+
+### Return type
+
+[**CallbackFailures**](CallbackFailures.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 <a id="scanAsyncDownloadPost"></a>
 # **scanAsyncDownloadPost**
@@ -528,7 +604,7 @@ This endpoint does not need any parameter.
 
 
 
-Get information abour yourself.
+Get information about yourself.
 
 ### Example
 ```java

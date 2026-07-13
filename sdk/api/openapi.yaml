@@ -159,9 +159,41 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /callback/failures:
+    get:
+      description: List callback failures
+      parameters:
+      - description: URL to receive the scan result via HTTPS POST
+        explode: true
+        in: query
+        name: callback_url
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Use the next_cursor value from a previous response to page through
+          failures
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CallbackFailures"
+          description: Success
+      tags:
+      - attachmentAV
+      x-accepts:
+      - application/json
   /whoami:
     get:
-      description: Get information abour yourself.
+      description: Get information about yourself.
       responses:
         "200":
           content:
@@ -201,8 +233,8 @@ components:
       example:
         credits: 0.8008281904610115
         quota:
-          period: period
           limit: 6.027456183070403
+          period: period
       properties:
         credits:
           type: number
@@ -211,12 +243,60 @@ components:
       required:
       - credits
       - quota
+    CallbackFailures:
+      example:
+        failures:
+        - id: id
+          time: 2000-01-23T04:56:07.000+00:00
+          download_url: download_url
+          callback_url: callback_url
+          error_json: error_json
+        - id: id
+          time: 2000-01-23T04:56:07.000+00:00
+          download_url: download_url
+          callback_url: callback_url
+          error_json: error_json
+        next_cursor: next_cursor
+      properties:
+        failures:
+          items:
+            $ref: "#/components/schemas/CallbackFailure"
+          type: array
+        next_cursor:
+          type: string
+      required:
+      - failures
+    CallbackFailure:
+      example:
+        id: id
+        time: 2000-01-23T04:56:07.000+00:00
+        download_url: download_url
+        callback_url: callback_url
+        error_json: error_json
+      properties:
+        id:
+          type: string
+        time:
+          format: date-time
+          type: string
+        download_url:
+          type: string
+        callback_url:
+          type: string
+        error_json:
+          type: string
+      required:
+      - callback_url
+      - download_url
+      - error_json
+      - id
+      - time
     ScanResult:
       example:
+        status: status
+        finding: finding
         size: 0.8008281904610115
         realfiletype: realfiletype
-        finding: finding
-        status: status
       properties:
         status:
           type: string
@@ -252,8 +332,8 @@ components:
     SyncS3ScanRequest:
       example:
         bucket: bucket
-        version: version
         key: key
+        version: version
       properties:
         bucket:
           type: string
@@ -266,13 +346,13 @@ components:
       - key
     AsyncDownloadScanRequest:
       example:
-        callback_url: callback_url
-        trace_id: trace_id
         download_url: download_url
-        callback_headers:
-          key: callback_headers
         download_headers:
           key: download_headers
+        callback_url: callback_url
+        callback_headers:
+          key: callback_headers
+        trace_id: trace_id
         custom_data: custom_data
       properties:
         download_url:
@@ -310,13 +390,13 @@ components:
     AsyncS3ScanRequest:
       example:
         bucket: bucket
+        key: key
+        version: version
         callback_url: callback_url
-        trace_id: trace_id
         callback_headers:
           key: callback_headers
-        version: version
+        trace_id: trace_id
         custom_data: custom_data
-        key: key
       properties:
         bucket:
           type: string
@@ -346,8 +426,8 @@ components:
       - key
     Usage_quota:
       example:
-        period: period
         limit: 6.027456183070403
+        period: period
       properties:
         limit:
           type: number

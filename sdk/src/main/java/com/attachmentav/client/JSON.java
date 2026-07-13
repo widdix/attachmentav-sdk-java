@@ -98,6 +98,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.AsyncDownloadScanRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.AsyncS3ScanRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.CallbackFailure.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.CallbackFailures.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.ScanResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.SyncDownloadScanRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.attachmentav.model.SyncS3ScanRequest.CustomTypeAdapterFactory());

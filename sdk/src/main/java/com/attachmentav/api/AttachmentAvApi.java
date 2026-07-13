@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import com.attachmentav.model.AsyncDownloadScanRequest;
 import com.attachmentav.model.AsyncS3ScanRequest;
+import com.attachmentav.model.CallbackFailures;
 import java.io.File;
 import com.attachmentav.model.ScanResult;
 import com.attachmentav.model.SyncDownloadScanRequest;
@@ -79,6 +80,144 @@ public class AttachmentAvApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for callbackFailuresGet
+     * @param callbackUrl URL to receive the scan result via HTTPS POST (required)
+     * @param cursor Use the next_cursor value from a previous response to page through failures (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call callbackFailuresGetCall(@javax.annotation.Nonnull String callbackUrl, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/callback/failures";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (callbackUrl != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("callback_url", callbackUrl));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKeyAuth", "bearerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call callbackFailuresGetValidateBeforeCall(@javax.annotation.Nonnull String callbackUrl, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'callbackUrl' is set
+        if (callbackUrl == null) {
+            throw new ApiException("Missing the required parameter 'callbackUrl' when calling callbackFailuresGet(Async)");
+        }
+
+        return callbackFailuresGetCall(callbackUrl, cursor, _callback);
+
+    }
+
+    /**
+     * 
+     * List callback failures
+     * @param callbackUrl URL to receive the scan result via HTTPS POST (required)
+     * @param cursor Use the next_cursor value from a previous response to page through failures (optional)
+     * @return CallbackFailures
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public CallbackFailures callbackFailuresGet(@javax.annotation.Nonnull String callbackUrl, @javax.annotation.Nullable String cursor) throws ApiException {
+        ApiResponse<CallbackFailures> localVarResp = callbackFailuresGetWithHttpInfo(callbackUrl, cursor);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * List callback failures
+     * @param callbackUrl URL to receive the scan result via HTTPS POST (required)
+     * @param cursor Use the next_cursor value from a previous response to page through failures (optional)
+     * @return ApiResponse&lt;CallbackFailures&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CallbackFailures> callbackFailuresGetWithHttpInfo(@javax.annotation.Nonnull String callbackUrl, @javax.annotation.Nullable String cursor) throws ApiException {
+        okhttp3.Call localVarCall = callbackFailuresGetValidateBeforeCall(callbackUrl, cursor, null);
+        Type localVarReturnType = new TypeToken<CallbackFailures>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * List callback failures
+     * @param callbackUrl URL to receive the scan result via HTTPS POST (required)
+     * @param cursor Use the next_cursor value from a previous response to page through failures (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call callbackFailuresGetAsync(@javax.annotation.Nonnull String callbackUrl, @javax.annotation.Nullable String cursor, final ApiCallback<CallbackFailures> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = callbackFailuresGetValidateBeforeCall(callbackUrl, cursor, _callback);
+        Type localVarReturnType = new TypeToken<CallbackFailures>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for scanAsyncDownloadPost
      * @param asyncDownloadScanRequest  (required)
@@ -1027,7 +1166,7 @@ public class AttachmentAvApi {
 
     /**
      * 
-     * Get information abour yourself.
+     * Get information about yourself.
      * @return Whoami
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1044,7 +1183,7 @@ public class AttachmentAvApi {
 
     /**
      * 
-     * Get information abour yourself.
+     * Get information about yourself.
      * @return ApiResponse&lt;Whoami&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1062,7 +1201,7 @@ public class AttachmentAvApi {
 
     /**
      *  (asynchronously)
-     * Get information abour yourself.
+     * Get information about yourself.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
